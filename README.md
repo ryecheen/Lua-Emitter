@@ -59,3 +59,21 @@
 * `Emitter:removeAllListeners()` : Remove all listeners. To remove listeners 
     for a specific event, use `Emitter:removeListener(event)` instead.
 
+## _Example_
+```lua
+local Emitter = require("emitter")
+
+Emi = Emitter()
+
+Emi:on("test", function(n) print(n) end)
+Emi:on("test", function(n) print(n) end, 2)
+Emi:on("test", function(n) print(n) end, 10)
+Emi:once("test", function(n) print(n) end)
+
+for i = 1, 5 do Emi:emit("test", i) end
+
+Emi:removeListener("test", nil, 5)
+
+Emi:emit("test", 6)
+```
+
